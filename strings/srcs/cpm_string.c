@@ -59,16 +59,12 @@ const char* string_get(String_t* str) // CONSUMES THE String_t
     return str->inner_str;
 }  
 
-String_t string_copy(String_t* str)
+void string_copy(String_t* dest, String_t* src)
 {
-    String_t res;
-    res.capacity = str->capacity;
-    res.size = str->size;
-    char* res_new_ptr = strdup(str->inner_str);
-    if(!res_new_ptr){ res_new_ptr = malloc(sizeof(res.capacity));}
-    res.inner_str = res_new_ptr;
-
-    return res; 
+    dest->capacity = src->capacity;
+    dest->inner_str = malloc(dest->capacity);
+    strcpy(dest->inner_str, src->inner_str);
+    dest->size = src->size;
 }
 size_t string_length(String_t* str)
 {
