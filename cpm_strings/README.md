@@ -21,4 +21,4 @@ int main(void)
     return 0;
 } 
 ```
-Full Documentation [here](./DOCS.md)
+Documentation [here](./DOCS.md)
