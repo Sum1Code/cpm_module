@@ -10,11 +10,13 @@ typedef struct StringType{
   size_t size;
 } String_t;
 
-String_t string_new();
-String_t string_from_cstr(const char* str);
-String_t string_concat(String_t str);
-const char* string_get(String_t str); // CONSUMES THE String_t 
-String_t string_copy(String_t str);
-size_t string_length(String_t str);
-size_t string_capacity (String_t str);
-bool string_clear(String_t str);
+void string_init(String_t* str);
+void string_init_cstr(String_t* str, char* cstr);
+bool string_concat(String_t* dest, String_t* src);
+bool string_concat_cstr(String_t* dest,  const char* src);
+const char* string_get(String_t* str); // CONSUMES THE String_t passed to it! 
+String_t string_copy(String_t* str);
+size_t string_length(String_t* str);
+size_t string_capacity (String_t* str);
+void string_clear(String_t* str); // Will clear the underlying string but won't delete the memory its in.
+void string_free(String_t* str); // deletes the underlying memory the inner string resides in
